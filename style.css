@@ -1,0 +1,130 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    padding: 50px;
+}
+
+.mainContainer{
+    max-width: 375px;
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+h2.card--title{
+    color: hsl(0, 0%, 95%);
+    font-family: 'Big Shoulders Display', cursive;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    margin: 30px 0;
+}
+
+p.card--ph{
+    color: hsla(0, 0%, 100%, 0.75);
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.9rem;
+    margin: 0 0 25px;
+    line-height: 27px;
+    padding: 0 25px 0 0;
+}
+
+.button_cta--sedans{
+    width: 60%;
+    height: 50px;
+    background-color: hsl(0, 0%, 95%);
+    border-radius: 25px;
+    border: none;
+}
+
+.button_cta--suvs{
+    width: 60%;
+    height: 50px;
+    background-color: hsl(0, 0%, 95%);
+    border-radius: 25px;
+    border: none;
+}
+
+.button_cta--luxury{
+    width: 60%;
+    height: 50px;
+    background-color: hsl(0, 0%, 95%);
+    border-radius: 25px;
+    border: none;
+}
+
+.button_cta:hover{
+    background-color: transparent;
+    border:2px solid hsl(0, 0%, 95%);
+    color:  hsl(0, 0%, 95%);
+    -webkit-background-clip: border-box;
+
+}
+
+.cta--text{
+    font-weight: 600;
+    font-size: 15px;
+    background-size: cover;
+    -webkit-background-clip: text;
+    width: 60%;
+    height: 50px;
+    text-align: center;
+
+}
+
+.cta--text:hover{
+    color:  hsl(0, 0%, 95%);
+}
+
+.card{
+    padding: 50px;
+    height: auto;
+}
+
+
+.sedans{
+    background-color: hsl(31, 77%, 52%);
+    color: hsl(31, 77%, 52%);
+}
+
+.sedans--img{
+    background-image: url(images/icon-sedans.svg);
+    position: relative;
+    inset: 0;
+    background-repeat: no-repeat;
+    width: 75px;
+    height: 50px;
+}
+
+.suvs{
+    background-color:  hsl(184, 100%, 22%);
+    color:  hsl(184, 100%, 22%);
+}
+
+.suvs--img{
+    background-image: url(images/icon-suvs.svg);
+    position: relative;
+    inset: 0;
+    background-repeat: no-repeat;
+    width: 75px;
+    height: 50px;
+}
+
+.luxury{
+    background-color: hsl(179, 100%, 13%);
+    color: hsl(179, 100%, 13%);
+
+}
+
+.luxury--img{
+    background-image: url(images/icon-luxury.svg);
+    position: relative;
+    inset: 0;
+    background-repeat: no-repeat;
+    width: 75px;
+    height: 50px;
+}
