@@ -6,14 +6,13 @@
 }
 
 body{
-    padding: 50px;
 }
 
 .mainContainer{
     max-width: 375px;
     width: 100%;
     height: auto;
-    margin: auto;
+    margin: 50px auto 20px;
 }
 
 h2.card--title{
@@ -57,12 +56,49 @@ p.card--ph{
     border: none;
 }
 
-.button_cta:hover{
+.button_cta--sedans:hover{
+    width: 60%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid hsl(0, 0%, 95%); 
+    border-radius: 25px;
+    
+}
+
+.button_cta--suvs:hover{
+    width: 60%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid hsl(0, 0%, 95%); 
+    border-radius: 25px;
+}
+
+.button_cta--luxury:hover{
+    width: 60%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid hsl(0, 0%, 95%); 
+    border-radius: 25px;
+}
+
+
+
+/*.button_cta:hover{
     background-color: transparent;
     border:2px solid hsl(0, 0%, 95%);
     color:  hsl(0, 0%, 95%);
     -webkit-background-clip: border-box;
+    cursor: pointer;
 
+}
+*/
+.cta--div{
+    width:100%;
+    height: 50px;
+}
+
+.cta--div:hover{
+    cursor: pointer;
 }
 
 .cta--text{
@@ -70,14 +106,16 @@ p.card--ph{
     font-size: 15px;
     background-size: cover;
     -webkit-background-clip: text;
-    width: 60%;
-    height: 50px;
+    position: relative;
+    justify-content: center;
     text-align: center;
-
+    display: block;
+    height: 65px;
+    padding-top:15px;
 }
 
 .cta--text:hover{
-    color:  hsl(0, 0%, 95%);
+    top: -2px;
 }
 
 .card{
@@ -89,6 +127,10 @@ p.card--ph{
 .sedans{
     background-color: hsl(31, 77%, 52%);
     color: hsl(31, 77%, 52%);
+}
+
+.sedans:hover{
+    color:hsl(0, 0%, 95%);
 }
 
 .sedans--img{
@@ -103,6 +145,10 @@ p.card--ph{
 .suvs{
     background-color:  hsl(184, 100%, 22%);
     color:  hsl(184, 100%, 22%);
+}
+
+.suvs:hover{
+    color:hsl(0, 0%, 95%);
 }
 
 .suvs--img{
@@ -120,6 +166,10 @@ p.card--ph{
 
 }
 
+.luxury:hover{
+    color:hsl(0, 0%, 95%);
+}
+
 .luxury--img{
     background-image: url(images/icon-luxury.svg);
     position: relative;
@@ -128,3 +178,4 @@ p.card--ph{
     width: 75px;
     height: 50px;
 }
+
