@@ -32,31 +32,18 @@ p.card--ph{
     padding: 0 25px 0 0;
 }
 
-.button_cta--sedans{
+.button_cta{
     width: 60%;
+    min-width: 150px;
     height: 50px;
     background-color: hsl(0, 0%, 95%);
     border-radius: 25px;
     border: none;
 }
 
-.button_cta--suvs{
-    width: 60%;
-    height: 50px;
-    background-color: hsl(0, 0%, 95%);
-    border-radius: 25px;
-    border: none;
-}
 
-.button_cta--luxury{
-    width: 60%;
-    height: 50px;
-    background-color: hsl(0, 0%, 95%);
-    border-radius: 25px;
-    border: none;
-}
 
-.button_cta--sedans:hover{
+.button_cta:hover{
     width: 60%;
     height: 50px;
     background-color: transparent;
@@ -65,21 +52,7 @@ p.card--ph{
     
 }
 
-.button_cta--suvs:hover{
-    width: 60%;
-    height: 50px;
-    background-color: transparent;
-    border: 2px solid hsl(0, 0%, 95%); 
-    border-radius: 25px;
-}
 
-.button_cta--luxury:hover{
-    width: 60%;
-    height: 50px;
-    background-color: transparent;
-    border: 2px solid hsl(0, 0%, 95%); 
-    border-radius: 25px;
-}
 
 
 
@@ -178,4 +151,33 @@ p.card--ph{
     width: 75px;
     height: 50px;
 }
+
+@media screen and (min-width:768px) {
+    
+    body{
+        overflow-x: hidden;
+    }
+    
+    .mainContainer{
+        max-width: 1440px;
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        
+    }
+
+    p.card--ph{
+        padding: 0;
+    }
+
+    .button_cta {
+        margin-top: 50px;
+        width: 70%;
+        min-width: 150px;
+    }
+
+    
+}
+
+
 
