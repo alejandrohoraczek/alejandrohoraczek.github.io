@@ -30,6 +30,7 @@ p.card--ph{
     margin: 0 0 25px;
     line-height: 27px;
     padding: 0 25px 0 0;
+    height: 150px;
 }
 
 .button_cta{
@@ -176,6 +177,12 @@ p.card--ph{
         min-width: 150px;
     }
 
+    .button_cta:hover{
+        width: 70%;
+
+        
+    }
+    
     
 }
 
