@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+:root {
+    --color-primary: hsl(229, 57%, 11%);
+    --color-secondary: hsl(228, 56%, 26%);
+    --color-grayish-blue: hsl(229, 7%, 55%);
+    --color-pale-blue: hsl(243, 100%, 93%);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.4rem;
+    color: #fafafa;
+
+    background:  url('images/bg-desktop.png'), var(--color-primary);
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    background-size: 100vw 50vh;
+    overflow: hidden;
+
+    height: 100vh;
+}
+
+/* Structure */
+
+.wrapper {
+    display: grid;
+    /* grid-template-columns: 1fr 1.5fr; */
+    grid-template-columns: repeat(auto-fit, minmax(374px, 1fr) );
+
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: end; 
+
+    gap: 2rem;
+
+    margin: auto;   
+
+    /* min-width: 76.8rem;
+    max-width: 144rem;
+    width: 70%;
+    width: 90vw; 
+    height: 100vh;
+    margin: auto; */
+
+    /* position: absolute; */
+    
+}
+
+.options {
+    background: var(--color-secondary);
+    padding: 3rem 8rem 3rem 4rem;
+
+    /* display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: min-content min-content;
+    gap: 2rem; */
+
+    align-items: center;
+
+    width: 100%;
+    /* max-width: 45rem;
+    min-width: 25rem; */
+
+    height: 100%;
+
+    border-radius: 10px 80px 10px 10px;
+}
+
+.options > h1 {
+    display: none;
+}
+
+.options > ul {
+    display: grid;
+    grid-template-rows: min-content;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    list-style: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+
+}
+
+.options > ul > li {
+    background: var(--color-primary);
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align:  center;
+    border-radius: 5px;
+
+}
+
+.storage {
+    /* background: var(--color-secondary);
+
+    display: grid;
+    grid-template-columns: minmax(max-content, auto);
+    grid-template-rows: 5rem 1fr 1fr 1fr;
+    gap: 1rem;
+
+    justify-self: self-start;
+    align-self: end;
+
+    width: 100%;
+    min-width: 30rem;
+    max-width: 100rem;
+
+    max-height: 80%;
+
+    border-radius: 10px;
+    padding: 1.5rem 1rem; */
+
+    display: grid;
+
+    justify-self: self-start;
+    align-self: end;
+
+    width: 100%;
+}
+
+.grid__inside {
+    background: var(--color-secondary);
+
+    display: grid;
+    grid-template-columns: minmax(max-content, auto);
+    grid-template-rows: 5rem 1fr 1fr 1fr;
+    gap: 1rem;
+    justify-self: self-start;
+    align-self: end;
+
+    width: 100%;
+    min-width: 30rem;
+    max-width: 100rem;
+
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+}
+
+.storage__left {
+    display: grid;
+    justify-self: end;
+    align-self: start;
+
+    position: relative;
+    top: -105%;
+    right: 5%;
+
+    background-color: #fafafa;
+
+    color: #000;
+
+    padding: 1rem 2rem;
+    border-radius: 10px;
+
+    z-index: 2;
+    order: -1;
+}
+
+.storage__left > p {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: var(--color-grayish-blue)
+}
+
+.storage__left > p > span {
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #0a0a0a;
+}
+
+.storage__left > p::after {
+    content: "____";
+    background-color: #fafafa;
+    color: #fafafa;
+
+    height: 6rem;
+    width: 6rem;
+    
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+    z-index: -1;
+
+    transform: rotate(270deg);
+
+    clip-path: polygon(50.00% 40.00%, 0% 100%, 100% 100%)
+}
+
+.storage__bar {
+    background: #000;
+    opacity: 0.4;
+    border-radius: 10px;
+    height: 100%;
+    min-height: 10px;
+}
+
+.storage__used {
+    /* background: linear-gradient(to bottom, hsl(6, 100%, 80%), hsl(335, 100%, 65%); */
+    width: 80%;
+    height: 100%;
+}

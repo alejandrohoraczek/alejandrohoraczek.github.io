@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+
+:root{
+    --violeta: hsl(263, 55%, 52%);
+    --grisazul: hsl(217, 19%, 35%);
+    --negroazul: hsl(219, 29%, 14%);
+    --blanco: hsl(0, 0%, 100%);
+
+    --grisclaro: hsl(0, 0%, 81%);
+    --grisazulclaro: hsl(210, 46%, 95%);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body{
+    /* display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 1fr 50px;
+    margin: auto; */
+    background-color: var(--grisazulclaro);
+    overflow-x: hidden;
+}
+
+/*  ============== 
+    ==== GRID ====
+    ==============  */
+
+.grid{
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas: 
+        "dan dan jon kira"
+        "jean pat pat kira";
+
+    width: 90%;
+    max-width: 1120px;
+    min-width: 768px;
+    margin: auto; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    place-content: center;
+}
+
+.box{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    /* align-items: end; */
+
+    padding: 2.5rem 3rem;
+    color: var(--blanco);
+    min-height: 250px;
+    border-radius: 15px;
+}
+
+.box--1{
+    background-color: var(--violeta);
+    grid-area: dan;
+}
+
+.box--2{
+    background-color: var(--grisazul);
+    grid-area: jon;
+}
+
+.box--3{
+    background-color: var(--blanco);
+    grid-area: jean;
+    color: var(--grisazul);
+}
+
+.box--4{
+    background-color: var(--negroazul);
+    grid-area: pat;
+}
+
+.box--5{
+    background-color: var(--blanco);
+    grid-area: kira;
+    color: var(--grisazul);
+
+}
+
+.bg{
+    background-image: url('images/bg-pattern-quotation.svg');
+    background-position: right 5rem top;
+    background-repeat: no-repeat;
+    
+}
+
+/*  ============================== 
+    ==== HEADINGS, TEXTS, IMG ====
+    ==============================   */
+
+.profile--img{
+    box-sizing: content-box;
+    border-radius: 50px;
+    width: 5rem;
+}
+
+.border{
+    border:  0.3rem solid #a67edf;
+}
+
+.profile--name{
+    font-size: 1.6rem;
+}
+
+.profile--name::after{
+    display: block;
+    content: 'Verified Graduate';
+    opacity: 0.5;
+}
+
+.profile{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+}
+
+.profile--heading{
+    display: grid;
+    align-self: start;
+    font-size: 2rem;
+    /* margin: 1.5rem 0; */
+}
+
+.profile--content{
+    align-self:  end;
+    font-size: 1.3rem;
+    color: var(--grisclaro);
+    font-weight: 400;
+    line-height: 2rem;
+    /* margin-top: 2rem; */
+}
+
+/* BACKGROUND COLOR FOR WHITE CARDS */
+
+.box--3 .profile--content, .box--5 .profile--content{
+    color: var(--grisazul);
+}
