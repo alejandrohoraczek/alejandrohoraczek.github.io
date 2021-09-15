@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Todo app</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body class="bg-img light">
+  <div class="main-content">
+    <header>
+      <h1 class="title">Todo</h1>
+      <img src="images/icon-moon.svg" class="light-mode">
+    </header>
+
+    <main>
+
+      <section class="input-todo">
+        <form>
+          <input type="text" autocomplete="off" placeholder="Create a new todo..." name="todoInput" id="todoInput">
+          <button class="sendTodoBtn" type="submit"></button>
+        </form>
+      </section>
+
+      <div class="todo-wrapper box-shadow">
+        <section class="todo-list">
+          <ul>
+
+          </ul>
+          <div class="empty" id="empty">
+            <p>You don't have nothing to do... yet?</p>
+          </div>
+        </section>
+
+        <section class="settings">
+          <div class="items-left">
+            <p class="settings-text">
+              <!-- Add dynamic number --> items left
+            </p>
+          </div>
+
+          <div class="items-filter">
+            <a href="?filter=all" id="all"><span class="settings-text">All</span></a>
+            <a href="?filter=active" id="active"><span class="settings-text">Active</span></a>
+            <a href="?filter=completed" id="completed"><span class="settings-text">Completed</span></a>
+          </div>
+
+          <div class="items-clear">
+            <a href="#" id="clearCompleted"><span class="settings-text">Clear Completed</span></a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p class="settings-text">Drag and drop to reorder list</p>
+    </footer>
+
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+    <script src="app.js"></script>
+  </div>
+
+</body>
+
+</html>

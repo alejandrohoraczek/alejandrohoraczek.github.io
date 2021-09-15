@@ -85,14 +85,29 @@ main {
 
 }
 
-.answer {
-    display: none;
+
+
+.answer-box.close{
+
+    height: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: all 0s ease-out;
 
 }
 
-.answer > p {
+.answer-box.open{
+
+    height: auto;
+    transform: scaleY(1);
+    transition: all 0s ease-out;
+
+}
+
+.answer {
     padding-top: 1rem;
     font-size: 0.8rem;
+    display: block;
 }
 
 .question {
@@ -108,10 +123,17 @@ main {
     transform: rotate(0deg);
 }
 
-.show {
+.question.rotate::after {
+    content: url('images/icon-arrow-down.svg');
+    background-repeat: no-repeat;
+    display: inline-flex;
+    transform: rotate(180deg);
+}
+
+/* .show {
     display: block; 
 
-}
+} */
 
 .bold {
     font-weight: 700;
