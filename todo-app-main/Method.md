@@ -40,7 +40,9 @@ filterTodo(){
 }
 
 clearCompleted(){
-    
+    /*
+     
+    */
 }
 
 ```

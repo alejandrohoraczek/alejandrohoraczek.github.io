@@ -11,7 +11,7 @@ const filterCompleted = document.querySelector('#completed');
 const clearCompleted = document.querySelector('#clearCompleted');
 const urlParams = new URLSearchParams(window.location.search).get('filter')
 
-
+console.log(todoList.children)
 //Event listeners
 
 
@@ -551,12 +551,12 @@ function filterTodos(filter) {
 
 // }
 function clearCompletedTodos(e) {
-    const todoToDelete = e.path[2]; // todo DIV
+    const todoToDelete = todoList.children; // todo DIV
 
     let clearCompletedObj;
     let clearCompletedString;
     let clearCompletedArray;
-    let numberOfTodos = todoList.children.length; console.log(numberOfTodos)
+    let numberOfTodos = todoList.children.length;
     //if i dont have todo's saved, want to create an empty string
     //where i'm going to save the todo.
     //else, i'm going to load them
@@ -571,32 +571,30 @@ function clearCompletedTodos(e) {
     // console.log(todosCompletedObj) //obj
     // console.log(typeof todosCompletedString) //string
     // console.log(todosCompletedArray) //obj
+    for (let index = 0; index < numberOfTodos; index++) {
+        let isTodoActive = todoToDelete[index].lastElementChild.childNodes[1]
+        if (isTodoActive.classList.contains('active')) {
+            todoToDelete[index].remove();
+        }
 
-    for (let properties of clearCompletedObj) {
-        // console.log(`the key is ${key} and the value is ${value}`)
-        // console.log(`value ${todosCompletedObj[text]}`)
-        propertiesParsed = JSON.parse(properties);
+        for (let properties of clearCompletedObj) {
+            // console.log(`the key is ${key} and the value is ${value}`)
+            // console.log(`value ${todosCompletedObj[text]}`)
+            propertiesParsed = JSON.parse(properties);
 
-        if (propertiesParsed.state === 'completed' && propertiesParsed.indexes === numberOfTodos) {
-            propertiesParsed.state = 'deleted';
+            if (propertiesParsed.state === 'completed' && propertiesParsed.indexes === todoToDelete[index].dataset.index) {
+                propertiesParsed.state = 'deleted';
 
-            /*the following code could be used in the 
-            removeTodo function */
+                /*the following code could be used in the 
+                removeTodo function */
 
-            propertiesStringy = JSON.stringify(propertiesParsed)
-            clearCompletedObj.splice(propertiesParsed.indexes, 1, propertiesStringy)
-            localStorage.setItem('savedTodos', JSON.stringify(clearCompletedObj))
+                propertiesStringy = JSON.stringify(propertiesParsed)
+                clearCompletedObj.splice(propertiesParsed.indexes, 1, propertiesStringy)
+                localStorage.setItem('savedTodos', JSON.stringify(clearCompletedObj))
 
+            }
         }
     }
-
-    todoList.forEach(todo => {
-        console.log(todo)
-        if (todo === 'completed') {
-            todoToDelete.remove();
-        }
-    })
-
 
 }
 
