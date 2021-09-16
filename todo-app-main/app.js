@@ -10,12 +10,10 @@ const filterActive = document.querySelector('#active');
 const filterCompleted = document.querySelector('#completed');
 const clearCompleted = document.querySelector('#clearCompleted');
 const urlParams = new URLSearchParams(window.location.search).get('filter')
+const itemsLeft = document.querySelector('#itemsLeft')
 
-console.log(todoList.children)
 //Event listeners
 
-
-// document.addEventListener('DOMContentLoaded', getAllTodos);
 document.addEventListener('DOMContentLoaded', filterTodos(urlParams));
 sendTodoBtn.addEventListener('click', addTodo);
 // el forEach de abajo quizas se pueda eliminar, o quizas no
@@ -27,6 +25,7 @@ deleteTodoBtn.forEach((e) => {
     e.addEventListener('click', deleteTodo);
 });
 clearCompleted.addEventListener('click', clearCompletedTodos);
+document.addEventListener('DOMContentLoaded', allowReorder);
 
 //Functions
 
@@ -41,7 +40,6 @@ function addTodo(e) {
     } else {
         index = Object.keys(JSON.parse(localStorage.getItem('savedTodos'))).length; //deberia ser el ultimo index del localstorage guardado + 1
     }
-    console.log(index)
     //take input from user. capitalize
     input = todoInput.value[0].toUpperCase() + todoInput.value.substring(1);
 
@@ -110,10 +108,15 @@ function addTodo(e) {
         alert('You must have something better to do than nothing! 😅')
         todoInput.value = '';
     }
+
+    //update items left
+    itemsLeftFn();
 }
 
 
 function completeTodo(e) {
+
+
 
     let todosCompletedObj; //variable where i'll store all the localstorage values
     let todosCompletedString; //variable in array form to get lenght
@@ -170,17 +173,15 @@ function completeTodo(e) {
         }
     }
 
-
+    //update items left
+    itemsLeftFn();
 }
 
-
-
-
-
-
-
-
 function deleteTodo(e, todo) {
+
+
+
+
     const todoToDelete = e.path[2]; // todo DIV
     const todoToDeleteIndex = parseInt(todoToDelete.getAttribute('data-index'), 10);
     const todoText = todoToDelete.querySelector('p').innerText;
@@ -199,13 +200,7 @@ function deleteTodo(e, todo) {
         deleteFromLocalArray = Object.entries(deleteFromLocalObj);
     }
 
-    // console.log(todosCompletedObj) //obj
-    // console.log(typeof todosCompletedString) //string
-    // console.log(todosCompletedArray) //obj
-
     for (let properties of deleteFromLocalObj) {
-        // console.log(`the key is ${key} and the value is ${value}`)
-        // console.log(`value ${todosCompletedObj[text]}`)
         propertiesParsed = JSON.parse(properties);
 
         if (propertiesParsed.indexes === todoToDeleteIndex) {
@@ -220,21 +215,16 @@ function deleteTodo(e, todo) {
 
             todoToDelete.remove();
             break;
-
-
         }
     }
-
     if (document.querySelectorAll('li').length === 0) {
         emptyDiv.classList.remove('fade');
         emptyDiv.innerHTML = '<p>Keep on doing, keep on making.</p>'
         emptyDiv.style.display = 'block';
-
-
     }
 
-
-
+    //update items left
+    itemsLeftFn();
 }
 
 function saveTodo(todo, index) {
@@ -275,12 +265,9 @@ function getAllTodos() {
     }
 
 
-
     todosToLoad.forEach(todo => {
-        // console.log(JSON.parse(todo));
 
         const todos = JSON.parse(todo);
-        console.log(todos.state)
 
 
         if (todos.state !== 'deleted') {
@@ -356,7 +343,6 @@ function getCompletedTodos() {
     }
 
 
-
     todosToLoad.forEach(todo => {
         // console.log(JSON.parse(todo));
 
@@ -416,7 +402,8 @@ function getCompletedTodos() {
     if (document.querySelectorAll('li').length !== 0) {
         emptyDiv.classList.remove('fade');
         emptyDiv.style.display = 'none';
-
+    } else {
+        emptyDiv.firstElementChild.innerText = `You haven't completed nothing... yet.`
     }
 
     filterCompleted.firstChild.classList.add('active');
@@ -431,7 +418,6 @@ function getActiveTodos() {
     } else {
         todosToLoad = JSON.parse(localStorage.getItem('savedTodos'));
     }
-
 
 
     todosToLoad.forEach(todo => {
@@ -497,6 +483,7 @@ function getActiveTodos() {
 }
 
 function filterTodos(filter) {
+    itemsLeftFn();
     switch (filter) {
         case 'active':
             getActiveTodos();
@@ -510,79 +497,37 @@ function filterTodos(filter) {
     }
 }
 
-// function clearCompletedTodos() {
+function clearCompletedTodos() {
+    const nodeList = document.querySelectorAll('.todo-info');
+    let todosToComplete = [];
 
-//     let clearCompletedObj;
-//     let clearCompletedString;
-//     let clearCompletedArray;
-//     //if i dont have todo's saved, want to create an empty string
-//     //where i'm going to save the todo.
-//     //else, i'm going to load them
-//     if (localStorage.getItem('savedTodos') === null) {
-//         clearCompletedObj = [];
-//     } else {
-//         clearCompletedObj = JSON.parse(localStorage.getItem('savedTodos'));
-//         clearCompletedString = localStorage.getItem('savedTodos');
-//         clearCompletedArray = Object.entries(clearCompletedObj);
-//     }
+    nodeList.forEach(todo => {
+        const nodeListIndex = parseInt(todo.getAttribute('data-index'), 10);
+        const hasActiveClass = todo.querySelector('p');
 
-//     // console.log(todosCompletedObj) //obj
-//     // console.log(typeof todosCompletedString) //string
-//     // console.log(todosCompletedArray) //obj
-
-//     for (let properties of clearCompletedObj) {
-//         // console.log(`the key is ${key} and the value is ${value}`)
-//         // console.log(`value ${todosCompletedObj[text]}`)
-//         propertiesParsed = JSON.parse(properties);
-
-//         if (propertiesParsed.state === 'completed') {
-//             propertiesParsed.state = 'deleted';
-
-//             /*the following code could be used in the 
-//             removeTodo function */
-
-//             propertiesStringy = JSON.stringify(propertiesParsed)
-//             clearCompletedObj.splice(propertiesParsed.indexes, 1, propertiesStringy)
-//             localStorage.setItem('savedTodos', JSON.stringify(clearCompletedObj))
-
-//         }
-//     }
-
-
-// }
-function clearCompletedTodos(e) {
-    const todoToDelete = todoList.children; // todo DIV
+        if (hasActiveClass.classList.contains('completed')) {
+            todosToComplete.push(nodeListIndex);
+            todo.remove();
+        }
+    })
 
     let clearCompletedObj;
-    let clearCompletedString;
     let clearCompletedArray;
-    let numberOfTodos = todoList.children.length;
-    //if i dont have todo's saved, want to create an empty string
-    //where i'm going to save the todo.
-    //else, i'm going to load them
+
+
     if (localStorage.getItem('savedTodos') === null) {
         clearCompletedObj = [];
     } else {
         clearCompletedObj = JSON.parse(localStorage.getItem('savedTodos'));
-        clearCompletedString = localStorage.getItem('savedTodos');
         clearCompletedArray = Object.entries(clearCompletedObj);
     }
 
-    // console.log(todosCompletedObj) //obj
-    // console.log(typeof todosCompletedString) //string
-    // console.log(todosCompletedArray) //obj
-    for (let index = 0; index < numberOfTodos; index++) {
-        let isTodoActive = todoToDelete[index].lastElementChild.childNodes[1]
-        if (isTodoActive.classList.contains('active')) {
-            todoToDelete[index].remove();
-        }
+    for (let properties of clearCompletedObj) {
+        propertiesParsed = JSON.parse(properties);
 
-        for (let properties of clearCompletedObj) {
-            // console.log(`the key is ${key} and the value is ${value}`)
-            // console.log(`value ${todosCompletedObj[text]}`)
-            propertiesParsed = JSON.parse(properties);
+        for (let index = 0; index < todosToComplete.length; index++) {
 
-            if (propertiesParsed.state === 'completed' && propertiesParsed.indexes === todoToDelete[index].dataset.index) {
+            if (propertiesParsed.state === 'completed' && propertiesParsed.indexes === todosToComplete[index]) {
                 propertiesParsed.state = 'deleted';
 
                 /*the following code could be used in the 
@@ -593,12 +538,43 @@ function clearCompletedTodos(e) {
                 localStorage.setItem('savedTodos', JSON.stringify(clearCompletedObj))
 
             }
+
         }
+
+
     }
+    //update items left
+    itemsLeftFn();
 
 }
 
+function itemsLeftFn() {
+    let itemsLeftLocal;
+    let itemsLeftCounter = 0;
 
+    if (localStorage.getItem('savedTodos') === null) {
+        itemsLeftLocal = [];
+    } else {
+        itemsLeftLocal = JSON.parse(localStorage.getItem('savedTodos'));
+    }
+
+    for (let prop of itemsLeftLocal) {
+        let propParsed = JSON.parse(prop)
+        if (propParsed.state === 'active') {
+            itemsLeftCounter += 1;
+        }
+    }
+
+    itemsLeft.innerText = `${itemsLeftCounter} items left`
+}
+
+function allowReorder() {
+    let allDivs = todoList.childNodes;
+
+    allDivs.forEach(div => {
+        console.log(div)
+    })
+}
 
 /* Datos
 1)  sendTodoBtn y e.target son el mismo valor
