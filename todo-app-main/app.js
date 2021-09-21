@@ -571,9 +571,114 @@ function itemsLeftFn() {
 function allowReorder() {
     let allDivs = todoList.childNodes;
 
+    let index = 0; //initialize 
+    let savePos = [];
+
     allDivs.forEach(div => {
-        console.log(div)
+        div.setAttribute('draggable', 'true'); //set draggability to each div
+        div.setAttribute('data-pos', index); //set the position
+        index++; //add 1 for every div
+
+        savePos.push(index)
+
+        console.log(savePos)
     })
+
+    //Event Listeners
+}
+
+allowReorder(); //eliminar cuando sea necesario
+addEventListeners();
+
+function dragStart(e) {
+    const dragListItems = document.querySelectorAll('.todo-info');
+
+
+    let dragStartIndex = e.target.getAttribute('data-index'); //get attribute with position
+    let dragStartPos = e.target.getAttribute('data-pos'); //get attribute with position
+    e.target.classList.add('drag') //adding class drag to element which is being dragged
+    e.dataTransfer.setData('index', dragStartIndex);
+    e.dataTransfer.setData('pos', dragStartPos);
+    console.log('Event: ', 'dragstart', e);
+
+    let allButSelected = document.querySelectorAll('.todo-info:not(.drag)');
+    allButSelected.forEach(item => {
+        item.addEventListener('dragover', dragOver);
+        item.addEventListener('drop', dragDrop);
+        item.addEventListener('dragenter', dragEnter);
+        item.addEventListener('dragleave', dragLeave);
+    });
+}
+
+function dragEnter(e) {
+
+
+    console.log('Event: ', 'dragenter', fromIndex, fromPos);
+    e.target.style.opacity = 0.4;
+}
+
+function dragLeave(e) {
+
+
+    console.log('Event: ', 'dragleave', e);
+    e.target.style.opacity = 1;
+}
+
+function dragOver(e) {
+
+
+    console.log('Event: ', 'dragover');
+    e.preventDefault();
+}
+
+function dragDrop(e) {
+
+    console.log('Event: ', 'drop', e);
+
+    let dragStartIndex = e.dataTransfer.getData('index');
+    let dragStartPos = e.dataTransfer.getData('pos');
+    let dragEndIndex = e.target.getAttribute('data-index');
+    let dragEndPos = e.target.getAttribute('data-pos');
+
+    console.log(dragStartIndex, dragStartPos, dragEndIndex, dragEndPos)
+
+    swapItems(dragStartIndex, dragStartPos, dragEndIndex, dragEndPos);
+
+    e.target.style.opacity = 1;
+}
+
+// Swap list items that are drag and drop
+function swapItems(fromIndex, fromPos, toIndex, toPos) {
+    const allDivs = document.querySelectorAll('.todo-info');
+
+    const itemOne = allDivs[fromIndex];
+    const itemTwo = allDivs[toIndex];
+
+    console.log(itemOne)
+    console.log(itemTwo)
+
+    // todoList.childNodes[fromIndex].appendChild(itemTwo);
+    // todoList.childNodes[toIndex].appendChild(itemOne);
+}
+
+
+function addEventListeners() {
+    const dragListItems = document.querySelectorAll('.todo-info');
+    const todoList = document.querySelectorAll('.todo-list > ul');
+
+    // todoList.forEach((draggable, index) => {
+    //     draggable.addEventListener('dragstart', dragStart(index));
+    // });
+    dragListItems.forEach(draggable => {
+        draggable.addEventListener('dragstart', dragStart);
+    });
+
+    // dragListItems.forEach(item => {
+    //     item.addEventListener('dragover', dragOver);
+    //     item.addEventListener('drop', dragDrop);
+    //     item.addEventListener('dragenter', dragEnter);
+    //     item.addEventListener('dragleave', dragLeave);
+    // });
 }
 
 /* Datos

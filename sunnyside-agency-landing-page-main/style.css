@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary--one: hsl(7, 99%, 70%);
+    --primary--two: hsl(51, 100%, 49%);
+    --primary--three: hsl(167, 40%, 24%);
+    --primary--four: hsl(198, 62%, 26%);
+    --primary--five: hsl(168, 34%, 41%);
+    /*---------*/
+    --neutral--one: hsl(212, 27%, 19%);
+    --neutral--two: hsl(213, 9%, 39%);
+    --neutral--three: hsl(232, 10%, 55%);
+    --neutral--four: hsl(210, 4%, 67%);
+    --neutral--five: hsl(0, 0%, 100%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900');
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.8rem;
+    font-family: 'Barlow', sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+}
+
+header {
+    background-image: url('images/mobile/image-header.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* IDS */
+
+#menu-btn {
+    cursor: pointer;
+    margin: 3rem;
+    color: var(--neutral--five);
+}
+
+#intro {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-family: 'Fraunces', serif;
+    margin: 4rem 0;
+    text-align: center;
+    letter-spacing: 5px;
+    color: var(--neutral--five);
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+#intro h2::after {
+    background-image: url(images/icon-arrow-down.svg);
+    background-repeat: no-repeat;
+    content: '';
+    width: 36px;
+    height: 120px;
+    display: block;
+    margin: 5rem auto 0;
+}
+
+#services {}
+
+/* SERVICES CLASSES */
+
+.services-one {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.services-two {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    padding: 4rem 3rem 3rem;
+    font-weight: 900;
+    color: var(--neutral--one);
+}
+
+.section-ph {
+    color: var(--neutral--two);
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.learn {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    margin: 3rem auto;
+    display: block;
+    padding: 1rem;
+    max-width: 150px;
+}
+
+.learn::after {
+    content: '';
+    display: block;
+    width: inherit;
+    height: 1rem;
+    background-color: var(--primary--two);
+    opacity: 0.4;
+    border-radius: 4px;
+    position: relative;
+    top: -0.6rem;
+    z-index: -999;
+}
+
+/* CLASSES */
+
+.logo {
+    margin: 3rem;
+    color: var(--neutral--five);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu ul {
+    display: none;
+}
+
+.arrow-down {
+    color: var(--neutral--five);
+    display: block;
+}
+
+/* IMAGES */
+
+.img-mobile {
+    min-width: 375px;
+    width: 100vw;
+}
+
+.img-desktop {
+    display: none;
+}
