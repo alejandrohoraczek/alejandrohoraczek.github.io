@@ -100,6 +100,8 @@ header {
     color: var(--neutral--two);
     text-align: center;
     font-size: 1.8rem;
+    padding: 1rem;
+    line-height: 3rem;
 }
 
 .learn {
@@ -108,7 +110,7 @@ header {
     font-weight: 900;
     font-family: 'Fraunces', serif;
     font-size: 1.5rem;
-    margin: 3rem auto;
+    margin: 2rem auto 3rem;
     display: block;
     padding: 1rem;
     max-width: 150px;
