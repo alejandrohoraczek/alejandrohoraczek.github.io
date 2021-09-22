@@ -27,6 +27,7 @@ html {
 body {
     font-size: 1.8rem;
     font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -37,10 +38,16 @@ h1, h2, h3, h4 {
 header {
     background-image: url('images/mobile/image-header.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+    background-size: cover;
+    background-position: center, center;
     width: 100vw;
+    min-width: 375px;
+    min-height: 500px;
     height: 100vh;
+    display: grid;
+    justify-items: stretch;
+    align-items: start;
+    align-content: stretch;
 }
 
 /* IDS */
@@ -55,14 +62,15 @@ header {
     font-size: 2.5rem;
     text-transform: uppercase;
     font-family: 'Fraunces', serif;
-    margin: 4rem 0;
     text-align: center;
     letter-spacing: 5px;
     color: var(--neutral--five);
-    display: flex;
-    align-self: center;
-    flex-direction: column;
 }
+
+/* 
+#intro h2 {
+    padding: 0 1rem;
+} */
 
 #intro h2::after {
     background-image: url(images/icon-arrow-down.svg);
@@ -75,6 +83,24 @@ header {
 }
 
 #services {}
+
+#graphic {
+    background-image: url('images/mobile/image-graphic-design.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-width: 375px;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 0 4rem 0;
+}
+
+#standout {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
 
 /* SERVICES CLASSES */
 
@@ -96,12 +122,28 @@ header {
     color: var(--neutral--one);
 }
 
+.section-subtitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--neutral--one);
+    margin-bottom: 2rem;
+}
+
 .section-ph {
     color: var(--neutral--two);
     text-align: center;
     font-size: 1.8rem;
     padding: 1rem;
     line-height: 3rem;
+}
+
+.section-ph2 {
+    color: var(--neutral--two);
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    line-height: 2rem;
 }
 
 .learn {
@@ -116,12 +158,25 @@ header {
     max-width: 150px;
 }
 
-.learn::after {
+.services-one .learn::after {
     content: '';
     display: block;
     width: inherit;
     height: 1rem;
     background-color: var(--primary--two);
+    opacity: 0.4;
+    border-radius: 4px;
+    position: relative;
+    top: -0.6rem;
+    z-index: -999;
+}
+
+.services-two .learn::after {
+    content: '';
+    display: block;
+    width: inherit;
+    height: 1rem;
+    background-color: #fed9d0;
     opacity: 0.4;
     border-radius: 4px;
     position: relative;
